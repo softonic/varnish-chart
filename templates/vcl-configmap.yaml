@@ -1,0 +1,12 @@
+{{- if .Values.vcl }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "varnish.fullname" . }}
+  labels:
+    {{- include "varnish.labels" . | nindent 4 }}
+data:
+{{- range $filename, $fileContent := .Values.vcl }}
+  {{ $filename }}:{{- toYaml $fileContent | indent 2 }}
+{{- end }}
+{{- end }}
