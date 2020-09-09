@@ -17,6 +17,7 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
       annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
       {{- if and .Values.prometheus.enabled .Values.prometheus.scrape }}
         prometheus.io/scrape: "true"
         prometheus.io/path: "{{ .Values.prometheus.path }}"

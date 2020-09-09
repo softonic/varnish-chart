@@ -1,0 +1,34 @@
+{{- if and ( .Capabilities.APIVersions.Has "monitoring.coreos.com/v1" ) ( .Values.prometheus.serviceMonitor.enabled ) }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ template "varnish.name" .  }}
+  {{- if .Values.prometheus.serviceMonitor.namespace }}
+  namespace: {{ .Values.prometheus.serviceMonitor.namespace }}
+  {{- end }}
+  labels:
+  {{- include "varnish.labels" . | nindent 4 }}
+  {{- if .Values.prometheus.serviceMonitor.additionalLabels }}
+  {{ toYaml .Values.prometheus.serviceMonitor.additionalLabels | indent 4 }}
+  {{- end }}
+spec:
+  endpoints:
+    - targetPort: {{ .Values.prometheus.port }}
+      {{- if .Values.prometheus.serviceMonitor.interval }}
+      interval: {{ .Values.prometheus.serviceMonitor.interval }}
+      {{- end }}
+      {{- if .Values.prometheus.serviceMonitor.path }}
+      path: {{ .Values.prometheus.serviceMonitor.path }}
+      {{- end }}
+      {{- if .Values.prometheus.serviceMonitor.timeout }}
+      scrapeTimeout: {{ .Values.prometheus.serviceMonitor.timeout }}
+      honorLabels: {{ .Values.prometheus.serviceMonitor.honorLabels }}
+  {{- end }}
+  jobLabel: {{ template "varnish.fullname" . }}
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+  selector:
+    matchLabels:
+  {{- include "varnish.selectorLabels" . | nindent 6 }}
+  {{- end }}

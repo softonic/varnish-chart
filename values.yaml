@@ -99,5 +99,13 @@ prometheus:
     pullPolicy: IfNotPresent
   path: "/metrics"
   port: "9131"
-  scrape: true
+  scrape: false
   resources: {}
+  serviceMonitor:
+    enabled: true
+    additionalLabels: {}
+    honorLabels: true
+    interval: null
+    namespace: null
+    path: null
+    timeout: null
