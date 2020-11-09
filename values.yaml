@@ -37,6 +37,11 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
+autoscaling:
+  minReplicas: 1
+  maxReplicas: 10
+  metrics: []
+
 service:
   type: ClusterIP
   port: 80

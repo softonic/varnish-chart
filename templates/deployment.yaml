@@ -16,6 +16,8 @@ spec:
         {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
+        app: {{ include "varnish.name" . }}
+        version: {{ .Chart.Version }}
       annotations:
         rollme: {{ randAlphaNum 5 | quote }}
       {{- if and .Values.prometheus.enabled .Values.prometheus.scrape }}
