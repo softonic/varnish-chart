@@ -37,6 +37,19 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
+autoscaling:
+  minReplicas: 1
+  maxReplicas: 10
+  metrics: 
+    - type: Pods
+      pods:
+        metricName: varnish_main_client_req_rate
+        targetAverageValue: 100
+    - type: Pods
+      pods:
+        metricName: cpu_usage
+        targetAverageValue: 70
+
 service:
   type: ClusterIP
   port: 80
