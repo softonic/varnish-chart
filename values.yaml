@@ -10,8 +10,6 @@ image:
   repository: varnish
   pullPolicy: IfNotPresent
 
-
-
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
