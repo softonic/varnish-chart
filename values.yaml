@@ -11,10 +11,6 @@ image:
   pullPolicy: IfNotPresent
 
 
-## Additional arguments to pass to the varnishd daemon
-# args:
-  # - -d
-
 
 imagePullSecrets: []
 nameOverride: ""
