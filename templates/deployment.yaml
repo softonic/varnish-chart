@@ -59,10 +59,14 @@ spec:
           - name: vcl-configmap
             mountPath: /etc/varnish
           {{- end }}
+          {{- with .Values.livenessProbe }}
           livenessProbe:
-{{ toYaml .Values.livenessProbe | indent 12 }}
+{{ toYaml . | indent 12 }}
+          {{- end }}
+          {{- with .Values.readinessProbe }}
           readinessProbe:
-{{ toYaml .Values.readinessProbe | indent 12 }}
+{{ toYaml . | indent 12 }}
+          {{- end }}
           resources:
         {{- if .Values.logging.enabled }}
         - name: varnishncsa
