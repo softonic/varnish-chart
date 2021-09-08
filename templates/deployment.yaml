@@ -5,7 +5,9 @@ metadata:
   labels:
     {{- include "varnish.labels" . | nindent 4 }}
 spec:
+{{- if not .Values.autoscaling.metrics }}
   replicas: {{ .Values.replicaCount }}
+{{- end }}
   selector:
     matchLabels:
       {{- include "varnish.selectorLabels" . | nindent 6 }}
