@@ -44,6 +44,9 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: VARNISH_SIZE
+              value: {{ .Values.varnishSize }}
           ports:
             - name: http
               containerPort: 80
