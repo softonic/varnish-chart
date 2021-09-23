@@ -97,6 +97,9 @@ vcl: {}
 # example: vclConfigmap: my-vcl-configmap
 vclConfigmap: null
 
+# rollout deployment with each upgrade
+rolloutDeployment: true
+
 logging:
   enabled: true
   customOutput: null
