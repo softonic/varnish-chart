@@ -21,7 +21,12 @@ spec:
         app: {{ include "varnish.name" . }}
         version: {{ .Chart.Version }}
       annotations:
+      {{- if .Values.vcl }}
+        checksum/vclConfig: {{ include (print $.Template.BasePath "/vcl-configmap.yaml") . | sha256sum }}
+      {{- end }}
+      {{- if .Values.rolloutDeployment }}
         rollme: {{ randAlphaNum 5 | quote }}
+      {{- end }}
       {{- if and .Values.prometheus.enabled .Values.prometheus.scrape }}
         prometheus.io/scrape: "true"
         prometheus.io/path: "{{ .Values.prometheus.path }}"
