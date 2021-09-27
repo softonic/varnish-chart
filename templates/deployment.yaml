@@ -77,7 +77,6 @@ spec:
           readinessProbe:
 {{ toYaml . | indent 12 }}
           {{- end }}
-          resources:
         {{- if .Values.logging.enabled }}
         - name: varnishncsa
           image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
