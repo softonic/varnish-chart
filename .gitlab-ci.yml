@@ -10,7 +10,6 @@ variables:
 
 stages:
   - build
-  - deploy
 build:
   stage: build
   script:
@@ -19,27 +18,5 @@ build:
     - helm chart push $CHART_REGISTRY_URL
   only:
     - tags
-  except:
-    - pipelines
-
-deploy:
-  environment:
-    name: development
-  stage: deploy
-  variables:
-    CHART_PATH: /tmp/$CHART_NAME
-  script:
-    - echo $CHART_REGISTRY_URL
-    - echo "$CHART_NAME --- ${CHART_PATH}"
-    - helm registry login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - helm chart pull $CHART_REGISTRY_URL
-    - helm chart export $CHART_REGISTRY_URL -d $CHART_PATH
-    - helm upgrade --install $CHART_NAME ${CHART_PATH}
-#  when: manual
-  only:
-    refs:
-      - pipelines
-      - tags
-  allow_failure: false
 
 
