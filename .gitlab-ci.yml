@@ -27,13 +27,15 @@ deploy:
   environment:
     name: development
   stage: deploy
+  variables:
+    LOCAL_CHART_PATH: /tmp/$CHART_NAME
   script:
     - echo $CHART_REGISTRY_URL
-    - echo "$CHART_NAME --- ${CHART_PATH}"
+    - echo "$CHART_NAME --- ${LOCAL_CHART_PATH}"
     - helm registry login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - helm chart pull $CHART_REGISTRY_URL
-    - helm chart export $CHART_REGISTRY_URL -d $CHART_PATH
-    - helm upgrade --install $CHART_NAME ${CHART_PATH}
+    - helm chart export $CHART_REGISTRY_URL -d $CHART_PATHCHART_PATH
+    - helm upgrade --install $CHART_NAME ${CHART_PATHCHART_PATH}
 #  when: manual
   only:
     refs:
