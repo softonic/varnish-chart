@@ -26,12 +26,14 @@ package:
   variables:
     PACKAGE_NAME: "varnish"
     PACKAGE_VERSION: "0.6.2"
+  before_script:
+    - apk add git
+    - helm plugin install https://github.com/chartmuseum/helm-push.git
+    - 'helm repo add --username gitlab-ci-token --password ${CI_JOB_TOKEN} ${CI_PROJECT_NAME} ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/stable'
   script:
     - echo "$CI_REGISTRY_PASSWORD" | helm registry login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
     - helm package ./
-    - apk add git
-    - helm plugin install https://github.com/chartmuseum/helm-push.git
-    - helm cm-push "${PACKAGE_NAME}-${PACKAGE_VERSION}.tgz" PACKAGE_NAME
+    - helm cm-push "${PACKAGE_NAME}-${PACKAGE_VERSION}.tgz" $PACKAGE_NAME
   only:
     - master
 
