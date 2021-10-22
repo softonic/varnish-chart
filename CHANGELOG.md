@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/tebaly/varnish-chart/compare/v0.1.2...v0.1.3) (2021-10-22)
+
+
+### Bug Fixes
+
+* remove deploy stage ([86e801a](https://github.com/tebaly/varnish-chart/commit/86e801a1cf0d39f20ad93c292370f836e8f04689))
+
 ### [0.1.2](https://github.com/tebaly/varnish-chart/compare/v0.1.1...v0.1.2) (2021-10-22)
 
 
