@@ -4,18 +4,30 @@ image:
 
 variables:
   HELM_EXPERIMENTAL_OCI: 1
-  CHART_NAME: varnish
-  CHART_PROGECT: tebaly/varnish-chart
-  CHART_REGISTRY_URL: $CI_REGISTRY/$CHART_PROGECT/$CHART_NAME:$CI_COMMIT_TAG
+  CHART_NAME: varnish-chart
+  CHART_PROGECT: tebaly/$CHART_NAME
+  CHART_REGISTRY_URL: $CI_REGISTRY/$CHART_PROGECT:$CI_COMMIT_TAG
 
 stages:
-  - build
-build:
-  stage: build
+  - build-container
+  - build-package
+
+container:
+  stage: build-container
   script:
-    - helm registry login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - echo "$CI_REGISTRY_PASSWORD" | helm registry login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
     - helm chart save ./ $CHART_REGISTRY_URL
     - helm chart push $CHART_REGISTRY_URL
+  only:
+    - tags
+
+package:
+  stage: build-package
+  script:
+    - echo "$CI_REGISTRY_PASSWORD" | helm registry login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - helm package $CHART_NAME
+    - helm plugin install https://github.com/chartmuseum/helm-push.git
+    - helm push "${CHART_NAME}.tgz" $CHART_NAME
   only:
     - tags
 
