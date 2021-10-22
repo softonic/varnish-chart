@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.13](https://github.com/tebaly/varnish-chart/compare/v0.1.12...v0.1.13) (2021-10-22)
+
+
+### Bug Fixes
+
+* networking.k8s.io/v1 ([41f0ffb](https://github.com/tebaly/varnish-chart/commit/41f0ffb9ad1a9b0f51f1b2e7d3fe053bb8a53cc5))
+
 ### [0.1.12](https://github.com/tebaly/varnish-chart/compare/v0.1.11...v0.1.12) (2021-10-22)
 
 
