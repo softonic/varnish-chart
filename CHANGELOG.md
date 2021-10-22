@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/tebaly/varnish-chart/compare/v0.1.6...v0.1.7) (2021-10-22)
+
+
+### Bug Fixes
+
+* apk git ([b1f36f7](https://github.com/tebaly/varnish-chart/commit/b1f36f773eaf27c1291992037eb858a9f5c6dcaa))
+* apk git ([3a483ba](https://github.com/tebaly/varnish-chart/commit/3a483ba4b9f9f45e5e6690467c4194a3aba85d38))
+* ci project name ([99519c9](https://github.com/tebaly/varnish-chart/commit/99519c94e20d2b68f6dc92132458f3ec92b8b74a))
+* cm-push ([57e7331](https://github.com/tebaly/varnish-chart/commit/57e7331b4a21de812eb84a75409e2e17bed7db35))
+* could not find protocol ([22f4ae7](https://github.com/tebaly/varnish-chart/commit/22f4ae7d327b1e4222d0558bb36e16a488165b4b))
+* gitlab-ci helm ([3516232](https://github.com/tebaly/varnish-chart/commit/35162322453d44cdde8c756dce528bd649e181f1))
+* image helm-kubectl ([9688fe9](https://github.com/tebaly/varnish-chart/commit/9688fe93d5130af7be9486978e19708421397186))
+* package tag ver ([1cf9458](https://github.com/tebaly/varnish-chart/commit/1cf945875746f24727c39b8e3729250a1d27b531))
+
 ### [0.1.6](https://github.com/tebaly/varnish-chart/compare/v0.1.5...v0.1.6) (2021-10-22)
 
 
