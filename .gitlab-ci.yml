@@ -23,11 +23,13 @@ container:
 
 package:
   stage: build-package
+  variables:
+    CHART_VERSION: 0.6.2
   script:
     - echo "$CI_REGISTRY_PASSWORD" | helm registry login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
-    - helm package $CHART_NAME
+    - helm package ./
     - helm plugin install https://github.com/chartmuseum/helm-push.git
-    - helm push "${CHART_NAME}.tgz" $CHART_NAME
+    - helm push "${CHART_NAME}-${CHART_VERSION}.tgz" $CHART_NAME
   only:
     - tags
 
