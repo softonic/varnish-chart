@@ -4,6 +4,7 @@ image:
 
 variables:
   HELM_EXPERIMENTAL_OCI: 1
+  CHART_NAME: varnish
 
 stages:
   - build-container
@@ -14,10 +15,10 @@ container:
   script:
     - echo "$CI_REGISTRY_PASSWORD" | helm registry login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
     - echo $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
-    - helm chart save ./ $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
-    - helm chart push $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
-    - helm chart save ./ $CI_REGISTRY_IMAGE:latest
-    - helm chart push $CI_REGISTRY_IMAGE:latest
+    - helm chart save ./ $CI_REGISTRY_IMAGE/$CHART_NAME:$CI_COMMIT_TAG
+    - helm chart push $CI_REGISTRY_IMAGE/$CHART_NAME:$CI_COMMIT_TAG
+    - helm chart save ./ $CI_REGISTRY_IMAGE/$CHART_NAME:latest
+    - helm chart push $CI_REGISTRY_IMAGE/$CHART_NAME:latest
   only:
     - tags
 
@@ -33,7 +34,7 @@ package:
     - echo "$CI_PROJECT_NAME ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/stable"
     - 'helm repo add --username gitlab-ci-token --password $CI_JOB_TOKEN $CI_PROJECT_NAME ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/stable'
   script:
-    - helm cm-push ./ --version="$CI_COMMIT_TAG" $CI_PROJECT_NAME
+    - helm cm-push ./ --version="$CI_COMMIT_TAG" $CI_PROJECT_NAME/$CHART_NAME
   only:
     - tags
 
