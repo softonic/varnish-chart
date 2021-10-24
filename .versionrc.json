@@ -1,0 +1,9 @@
+{
+  "tagPrefix": "",
+  "bumpFiles": [
+    {
+      "filename": "Chart.yaml",
+      "updater": "standardVersionUpdaterYaml"
+    }
+  ]
+}
