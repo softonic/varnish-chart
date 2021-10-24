@@ -3,7 +3,7 @@
   "bumpFiles": [
     {
       "filename": "Chart.yaml",
-      "updater": "standardVersionUpdaterYaml"
+      "type": "plain-text"
     }
   ]
 }
