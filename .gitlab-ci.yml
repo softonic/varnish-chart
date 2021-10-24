@@ -15,19 +15,16 @@ container:
   script:
     - echo "$CI_REGISTRY_PASSWORD" | helm registry login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
     - echo $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
-    - helm chart save ./ $CI_REGISTRY_IMAGE/$CHART_NAME:$CI_COMMIT_TAG
-    - helm chart push $CI_REGISTRY_IMAGE/$CHART_NAME:$CI_COMMIT_TAG
-    - helm chart save ./ $CI_REGISTRY_IMAGE/$CHART_NAME:latest
-    - helm chart push $CI_REGISTRY_IMAGE/$CHART_NAME:latest
+    - helm chart save ./ $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+    - helm chart push $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+    - helm chart save ./ $CI_REGISTRY_IMAGE:latest
+    - helm chart push $CI_REGISTRY_IMAGE:latest
   only:
     - tags
 
 package:
   image: dtzar/helm-kubectl
   stage: build-package
-  variables:
-    PACKAGE_NAME: "varnish"
-    PACKAGE_VERSION: "0.6.2"
   before_script:
     - apk add git
     - helm plugin install https://github.com/chartmuseum/helm-push.git
