@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.25](https://github.com/tebaly/varnish-chart/compare/0.1.24...0.1.25) (2021-10-24)
+
+
+### Bug Fixes
+
+* helm err ([41f8829](https://github.com/tebaly/varnish-chart/commit/41f882932647cdd4e17ddbc3ed9feba8f93ff2e9))
+
 ### [0.1.24](https://github.com/tebaly/varnish-chart/compare/0.1.23...0.1.24) (2021-10-24)
 
 
