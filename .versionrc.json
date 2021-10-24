@@ -1,9 +1,3 @@
 {
-  "tagPrefix": "",
-  "bumpFiles": [
-    {
-      "filename": "Chart.yaml",
-      "type": "plain-text"
-    }
-  ]
+  "tagPrefix": ""
 }
