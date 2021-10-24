@@ -1,5 +1,5 @@
 image:
-  name: alpine/helm:3.2.1
+  name: alpine/helm:3.7.1
   entrypoint: ["/bin/sh", "-c"]
 
 variables:
