@@ -30,8 +30,8 @@ package:
   before_script:
     - apk add git
     - helm plugin install https://github.com/chartmuseum/helm-push.git
-    - echo "$HELM_REPO_URL"
-    - helm repo index --url ${HELM_REPO_URL} .
+    - echo $HELM_REPO_URL
+    - helm repo index ./ --url $HELM_REPO_URL
     - 'helm repo add --username gitlab-ci-token --password $CI_JOB_TOKEN $CI_PROJECT_NAME ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/stable'
   script:
     - helm cm-push ./ --version="$CI_COMMIT_TAG" $CI_PROJECT_NAME
