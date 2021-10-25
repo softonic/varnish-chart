@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.28](https://github.com/tebaly/varnish-chart/compare/0.1.27...0.1.28) (2021-10-25)
+
+
+### Bug Fixes
+
+* build-pages ([a0a5f0b](https://github.com/tebaly/varnish-chart/commit/a0a5f0b5b2d544efc1e043224531cb9fbf9bc943))
+
 ### [0.1.27](https://github.com/tebaly/varnish-chart/compare/0.1.26...0.1.27) (2021-10-25)
 
 
