@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/tebaly/varnish-chart/compare/0.1.29...0.2.0) (2021-10-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* add values "image.tag"
+
+### Features
+
+* tag ver ([9fcaec2](https://github.com/tebaly/varnish-chart/commit/9fcaec23ca00f698c41e761dca2315414318ac6e))
+
 ### [0.1.29](https://github.com/tebaly/varnish-chart/compare/0.1.28...0.1.29) (2021-10-25)
 
 
