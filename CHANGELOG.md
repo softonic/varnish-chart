@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/tebaly/varnish-chart/compare/0.2.1...0.2.2) (2021-10-25)
+
+
+### Bug Fixes
+
+* ingress ([80759da](https://github.com/tebaly/varnish-chart/commit/80759dad093d6cf17e6e5bbcccbffdc844c9edbc))
+
 ### [0.2.1](https://github.com/tebaly/varnish-chart/compare/0.2.0...0.2.1) (2021-10-25)
 
 
