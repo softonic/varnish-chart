@@ -9,7 +9,8 @@ variables:
 
 stages:
   - build-container
-  - build-package
+#  - build-package
+  - build-pages
 
 container:
   stage: build-container
@@ -23,21 +24,41 @@ container:
   only:
     - tags
 
-package:
+
+pages:
   image: dtzar/helm-kubectl:3.7.1
-  stage: build-package
+  stage: build-pages
   variables:
-    HELM_REPO_URL: "$CI_PROJECT_NAME ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/stable"
+    HELM_REPO_URL: "https://${CI_PROJECT_NAMESPACE}.gitlab.io/${CI_PROJECT_NAME}"
   before_script:
     - apk add git
-    - helm plugin install https://github.com/chartmuseum/helm-push.git
+    - mkdir -p ./public
     - echo $HELM_REPO_URL
-    - helm package . --version="$CI_COMMIT_TAG" --app-version="$CHART_APP_VERSION"
-    - helm repo index ./ --url="$HELM_REPO_URL"
-    - helm repo add --username gitlab-ci-token --password $CI_JOB_TOKEN $CI_PROJECT_NAME "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/stable"
   script:
-    - helm cm-push ./ $CI_PROJECT_NAME
+    - helm package . --version="$CI_COMMIT_TAG" --app-version="$CHART_APP_VERSION" --destination ./public
+    - helm repo index ./ --url="$HELM_REPO_URL"
+    - mv index.yaml ./public
+  artifacts:
+    paths:
+      - public
   only:
     - tags
+
+#package:
+#  image: dtzar/helm-kubectl:3.7.1
+#  stage: build-package
+#  variables:
+#    HELM_REPO_URL: "$CI_PROJECT_NAME ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/stable"
+#  before_script:
+#    - apk add git
+#    - helm plugin install https://github.com/chartmuseum/helm-push.git
+#    - echo $HELM_REPO_URL
+#    - helm package . --version="$CI_COMMIT_TAG" --app-version="$CHART_APP_VERSION"
+#    - helm repo index ./ --url="$HELM_REPO_URL"
+#    - helm repo add --username gitlab-ci-token --password $CI_JOB_TOKEN $CI_PROJECT_NAME "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/stable"
+#  script:
+#    - helm cm-push ./ $CI_PROJECT_NAME
+#  only:
+#    - tags
 
 
