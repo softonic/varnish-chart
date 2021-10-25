@@ -24,7 +24,6 @@ container:
   only:
     - tags
 
-
 pages:
   image: dtzar/helm-kubectl:3.7.1
   stage: build-pages
