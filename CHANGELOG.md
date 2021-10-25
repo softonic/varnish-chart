@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/tebaly/varnish-chart/compare/0.2.3...0.2.4) (2021-10-25)
+
+
+### Bug Fixes
+
+* add env.secrets values ([5a4e90c](https://github.com/tebaly/varnish-chart/commit/5a4e90c59787cbd1dfeda0978578e28a941a03be))
+
 ### [0.2.3](https://github.com/tebaly/varnish-chart/compare/0.2.2...0.2.3) (2021-10-25)
 
 
