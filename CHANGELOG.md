@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/tebaly/varnish-chart/compare/0.2.2...0.2.3) (2021-10-25)
+
+
+### Bug Fixes
+
+* PodDisruptionBudget v1 ([bc2232c](https://github.com/tebaly/varnish-chart/commit/bc2232c2f5090ed5fefff2f8c41d2012f0342a48))
+
 ### [0.2.2](https://github.com/tebaly/varnish-chart/compare/0.2.1...0.2.2) (2021-10-25)
 
 
