@@ -47,6 +47,11 @@ service:
   type: ClusterIP
   port: 80
 
+# Secret name array. Result like
+# envFrom.secretRef[0].name: secret-name
+env:
+  secrets: []
+
 ingress:
   enabled: false
   annotations: {}

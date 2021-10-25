@@ -52,6 +52,13 @@ spec:
           env:
             - name: VARNISH_SIZE
               value: {{ .Values.varnishSize }}
+          {{- if .Values.env.secrets }}
+          envFrom:
+            {{- range .Values.env.secrets }}
+            - secretRef:
+                name: {{ . }}
+            {{- end }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 80
