@@ -9,6 +9,7 @@ maxUnavailable: 1
 image:
   repository: varnish
   pullPolicy: IfNotPresent
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
