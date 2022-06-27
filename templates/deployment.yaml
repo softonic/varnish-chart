@@ -52,6 +52,12 @@ spec:
           env:
             - name: VARNISH_SIZE
               value: {{ .Values.varnishSize }}
+          {{- if .Values.arguments }}
+          args:
+            {{  range .Values.arguments }}
+              - {{ . }}
+            {{ end }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 80
