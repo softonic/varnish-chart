@@ -61,3 +61,14 @@ Create the name of the service account to use
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Return supported apiVersion for poddisruptionbudget
+*/}}
+{{- define "policy.apiVersion" -}}
+{{- if trimPrefix "v" .Capabilities.KubeVersion.Version | semverCompare "<1.21.0" -}}
+{{- print "policy/v1beta1" -}}
+{{- else -}}
+{{- print "policy/v1" -}}
+{{- end -}}
+{{- end -}}
