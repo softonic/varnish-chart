@@ -52,7 +52,9 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: VARNISH_SIZE
-              value: {{ .Values.varnishSize }}
+              value: "{{ .Values.varnishSize }}"
+            - name: VARNISH_HTTP_PORT
+              value: "{{ .Values.varnishListeningPort }}"
           {{- if .Values.arguments }}
           args:
             {{  range .Values.arguments }}
@@ -61,7 +63,7 @@ spec:
           {{- end }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.varnishListeningPort }}
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
