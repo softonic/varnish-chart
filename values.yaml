@@ -55,6 +55,7 @@ service:
   type: ClusterIP
   port: 80
   annotations: {}
+  nodePort: null
 
 ingress:
   enabled: false
