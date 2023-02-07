@@ -67,7 +67,7 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if or .Values.logging.enabled (or .Values.vcl .Values.vclConfigmap) }}
+          {{- if or .Values.logging.enabled .Values.vcl .Values.vclConfigmap .Values.extraVolumeMounts }}
           volumeMounts:
           {{- end }}
           {{- if .Values.logging.enabled }}
@@ -77,6 +77,9 @@ spec:
           {{- if or .Values.vcl .Values.vclConfigmap }}
           - name: vcl-configmap
             mountPath: /etc/varnish
+          {{- end }}
+          {{- if .Values.extraVolumeMounts }}
+          {{- toYaml .Values.extraVolumeMounts | nindent 12 }}
           {{- end }}
           {{- with .Values.livenessProbe }}
           livenessProbe:
@@ -134,16 +137,17 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-    {{- if or .Values.logging.enabled (or .Values.vcl .Values.vclConfigmap)}}
+    {{- if or .Values.logging.enabled .Values.vcl .Values.vclConfigmap .Values.extraVolumes }}
       volumes:
+      {{- if .Values.logging.enabled }}
       - name: vsm
         emptyDir:
           medium: Memory
           {{- if .Values.vsmMemorySizeLimit }}
           sizeLimit: {{ .Values.vsmMemorySizeLimit }}
           {{- end }}
-    {{- end }}
-    {{- if or .Values.vcl .Values.vclConfigmap }}
+      {{- end }}
+      {{- if or .Values.vcl .Values.vclConfigmap }}
       - name: vcl-configmap
         configMap:
       {{- if .Values.vclConfigmap }}
@@ -151,4 +155,9 @@ spec:
       {{ else if .Values.vcl }}
           name: {{ include "varnish.fullname" . }}
       {{- end }}
+      {{- end }}
+      {{- if .Values.extraVolumes }}
+        {{- toYaml .Values.extraVolumes | nindent 8 }}
+      {{- end }}
     {{- end }}
+
