@@ -79,7 +79,7 @@ spec:
             mountPath: /etc/varnish
           {{- end }}
           {{- if .Values.extraVolumeMounts }}
-          {{- toYaml .Values.extraVolumeMounts | nindent 12 }}
+          {{- toYaml .Values.extraVolumeMounts | nindent 10 }}
           {{- end }}
           {{- with .Values.livenessProbe }}
           livenessProbe:
@@ -157,7 +157,7 @@ spec:
       {{- end }}
       {{- end }}
       {{- if .Values.extraVolumes }}
-        {{- toYaml .Values.extraVolumes | nindent 8 }}
+        {{- toYaml .Values.extraVolumes | nindent 6 }}
       {{- end }}
     {{- end }}
 
