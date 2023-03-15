@@ -48,7 +48,7 @@ spec:
         - name: varnishd
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: {{ include "varnish.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: VARNISH_SIZE
@@ -91,7 +91,7 @@ spec:
           {{- end }}
         {{- if .Values.logging.enabled }}
         - name: varnishncsa
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: {{ include "varnish.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
           - varnishncsa

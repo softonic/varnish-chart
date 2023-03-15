@@ -8,6 +8,7 @@ maxUnavailable: 1
 
 varnishListeningPort: 80
 
+imageFullnameOverride: null
 image:
   repository: varnish
   pullPolicy: IfNotPresent
