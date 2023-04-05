@@ -77,9 +77,9 @@ Return supported apiVersion for poddisruptionbudget
 Create the name of the image to use
 */}}
 {{- define "varnish.image" -}}
-{{- if .Values.imageFullnameOverride }}
+{{- if .Values.imageFullnameOverride -}}
 {{- .Values.imageFullnameOverride -}}
-{{- else }}
+{{- else -}}
 {{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
-{{- end }}
-{{- end }}
+{{- end -}}
+{{- end -}}
