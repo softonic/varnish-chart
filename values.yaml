@@ -42,9 +42,13 @@ securityContext: {}
   # runAsUser: 1000
 
 autoscaling:
+  enabled: false
   minReplicas: 1
   maxReplicas: 10
   metrics: []
+  targetCPUUtilizationPercentage: null
+  targetMemoryUtilizationPercentage: null
+  behavior: {}
 
 strategy:
   type: RollingUpdate
