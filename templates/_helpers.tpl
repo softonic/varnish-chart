@@ -80,6 +80,6 @@ Create the name of the image to use
 {{- if .Values.imageFullnameOverride }}
 {{- .Values.imageFullnameOverride -}}
 {{- else }}
-{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
+{{- .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
 {{- end }}
 {{- end }}
