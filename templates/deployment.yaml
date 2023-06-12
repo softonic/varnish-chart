@@ -93,6 +93,8 @@ spec:
         - name: varnishncsa
           image: {{ include "varnish.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            {{- toYaml .Values.logging.securityContext | nindent 12 }}
           command:
           - varnishncsa
           {{- if .Values.logging.customOutput }}
@@ -109,6 +111,8 @@ spec:
         - name: prometheus-varnish-exporter
           image: "{{ .Values.prometheus.image.repository }}:{{ .Values.prometheus.image.tag }}"
           imagePullPolicy: {{ .Values.prometheus.image.pullPolicy }}
+          securityContext:
+            {{- toYaml .Values.prometheus.securityContext | nindent 12 }}
           ports:
           - name: http
             containerPort: {{ .Values.prometheus.port }}
