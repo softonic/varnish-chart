@@ -137,12 +137,27 @@ logging:
   enabled: true
   customOutput: null
   resources: {}
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+  # runAsUser: 1000
+
 prometheus:
   enabled: false
   image:
     repository: softonic/varnish
     tag: 7.2.1
     pullPolicy: IfNotPresent
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
   path: "/metrics"
   port: "9131"
   scrape: false
