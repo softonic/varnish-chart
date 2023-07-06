@@ -97,6 +97,7 @@ spec:
             {{ toYaml . | nindent 12 }}
           {{- end }}
           {{- if .Values.lifeCycle }}
+          lifecycle:
             {{ toYaml . | nindent 12 }}
           {{- end }}
         {{- if .Values.logging.enabled }}
