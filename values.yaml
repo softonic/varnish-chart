@@ -131,7 +131,7 @@ vcl: {}
 vclConfigmap: null
 
 # rollout deployment with each upgrade
-rolloutDeployment: true
+rolloutDeployment: false
 
 initContainers: []
 
