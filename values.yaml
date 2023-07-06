@@ -133,6 +133,8 @@ vclConfigmap: null
 # rollout deployment with each upgrade
 rolloutDeployment: true
 
+initContainers: []
+
 logging:
   enabled: true
   customOutput: null

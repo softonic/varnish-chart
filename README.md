@@ -7,3 +7,4 @@ Helm chart for Varnish Cache
 ```bash
 helm install --repo https://charts.softonic.io my-varnish varnish
 ```
+
