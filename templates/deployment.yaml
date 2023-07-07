@@ -96,7 +96,7 @@ spec:
           readinessProbe:
             {{ toYaml . | nindent 12 }}
           {{- end }}
-          {{- if .Values.lifeCycle }}
+          {{- with .Values.lifecycle }}
           lifecycle:
             {{ toYaml . | nindent 12 }}
           {{- end }}

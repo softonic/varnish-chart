@@ -109,7 +109,7 @@ resources: {}
 
 livenessProbe: {}
 readinessProbe: {}
-lifeCycle: {}
+lifecycle: {}
 
 varnishSize: 100M
 
