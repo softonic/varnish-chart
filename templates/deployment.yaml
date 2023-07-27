@@ -64,9 +64,9 @@ spec:
               value: "{{ .Values.varnishListeningPort }}"
           {{- if .Values.arguments }}
           args:
-            {{  range .Values.arguments }}
+            {{- range .Values.arguments }}
               - {{ . }}
-            {{ end }}
+            {{- end }}
           {{- end }}
           ports:
             - name: http
@@ -90,11 +90,11 @@ spec:
           {{- end }}
           {{- with .Values.livenessProbe }}
           livenessProbe:
-            {{ toYaml . | indent 12 }}
+            {{- toYaml . | nindent 12 }}
           {{- end }}
           {{- with .Values.readinessProbe }}
           readinessProbe:
-            {{ toYaml . | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
           {{- end }}
           {{- with .Values.lifecycle }}
           lifecycle:
