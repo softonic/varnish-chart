@@ -108,10 +108,15 @@ spec:
             {{- toYaml .Values.logging.securityContext | nindent 12 }}
           command:
           - varnishncsa
+          {{- if .Values.logging.customOutputJsonFormat }}
+          - -j
+          {{- end }}
           {{- if .Values.logging.customOutput }}
           - -F
           - {{ .Values.logging.customOutput | quote }}
           {{- end }}
+          - -t
+          - {{ .Values.logging.timeout | quote }}
           resources:
             {{- toYaml .Values.logging.resources | nindent 12 }}
           volumeMounts:
