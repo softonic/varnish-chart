@@ -1,4 +1,4 @@
-{{- if .Values.vcl }}
+{{- if or .Values.vcl  .Values.vclFiles }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -6,7 +6,14 @@ metadata:
   labels:
     {{- include "varnish.labels" . | nindent 4 }}
 data:
+{{- if .Values.vcl }}
 {{- range $filename, $fileContent := .Values.vcl }}
   {{ $filename }}:{{- toYaml $fileContent | indent 2 }}
+{{- end }}
+{{- end }}
+{{- if .Values.vclFiles }}
+{{- range $filename, $file := .Values.vclFiles }}
+  {{ $filename }}: {{- toYaml ($.Files.Get $file) | indent 2 }}
+{{- end }}
 {{- end }}
 {{- end }}
