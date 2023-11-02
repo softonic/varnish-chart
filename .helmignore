@@ -4,12 +4,8 @@
 .DS_Store
 # Common VCS dirs
 .git/
+.github/
 .gitignore
-.bzr/
-.bzrignore
-.hg/
-.hgignore
-.svn/
 # Common backup files
 *.swp
 *.bak
@@ -20,4 +16,3 @@
 .idea/
 *.tmproj
 .vscode/
-vcl/*
