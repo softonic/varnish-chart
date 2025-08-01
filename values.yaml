@@ -50,6 +50,8 @@ autoscaling:
   targetMemoryUtilizationPercentage: null
   behavior: {}
 
+hpa:
+  enabled: false
 strategy:
   type: RollingUpdate
   rollingUpdate:
