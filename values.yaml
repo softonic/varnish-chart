@@ -127,6 +127,9 @@ vcl: {}
   #     that
   #   }
 
+vclFiles: {}
+  # defaultByFile.vcl: "vcl/default.vcl"
+
 # set this to a configmap name if we want to provide our own instead of declaring text
 # it should have filenames as keys (as default.vcl)
 

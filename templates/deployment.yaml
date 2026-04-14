@@ -130,7 +130,7 @@ spec:
           securityContext:
             {{- toYaml .Values.prometheus.securityContext | nindent 12 }}
           ports:
-          - name: http
+          - name: exporter
             containerPort: {{ .Values.prometheus.port }}
             protocol: TCP
           resources:
@@ -162,7 +162,7 @@ spec:
     {{- end }}
     {{- if or .Values.logging.enabled .Values.vcl .Values.vclConfigmap .Values.extraVolumes }}
       volumes:
-      {{- if .Values.logging.enabled }}
+      {{- if or .Values.logging.enabled .Values.prometheus.enabled }}
       - name: vsm
         emptyDir:
           medium: Memory

@@ -18,9 +18,11 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+      {{- if .Values.prometheus.enabled }}
     - port: {{ .Values.prometheus.port }}
-      targetPort: http
+      targetPort: exporter
       protocol: TCP
       name: exporter
+      {{- end }}
   selector:
     {{- include "varnish.selectorLabels" . | nindent 4 }}
