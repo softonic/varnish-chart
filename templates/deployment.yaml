@@ -130,7 +130,7 @@ spec:
           securityContext:
             {{- toYaml .Values.prometheus.securityContext | nindent 12 }}
           ports:
-          - name: http
+          - name: metrics
             containerPort: {{ .Values.prometheus.port }}
             protocol: TCP
           resources:
